@@ -1,12 +1,129 @@
 :root {
-    --color-heading: #0B0D19;
-    --color-body: #677386;
-    --color-bg-button: #3D7BFA;
-    --color-text-button: #FFF;
+  --color-heading: #0b0d19;
+  --color-body: #677386;
+  --color-bg-button: #3d7bfa;
+  --color-text-button: #fff;
+  --size-step-0: clamp(1rem, calc(0.96rem + 0.22vw), 1.13rem);
+  --size-step-1: clamp(3rem, calc(2.05rem + 1.93vw), 5rem);
 
-    /* Når du synes, du er færdig, så ændr værdien herunder til '1' for at se dit resultat i browseren */
-    --hide-overlay: 0;
+  /* Når du synes, du er færdig, så ændr værdien herunder til '1' for at se dit resultat i browseren */
+  --hide-overlay: 1;
 }
 
-
 /* Begynd her... */
+
+/* Box sizing*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.7;
+  padding: 1em;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+/* Remove default margin */
+body,
+h1,
+p {
+  margin: 0;
+}
+
+/*Style h1*/
+h1 {
+  color: var(--color-heading);
+  font-size: var(--size-step-1);
+  font-weight: 800;
+}
+
+/*Style brødtekst*/
+p {
+  color: var(--color-body);
+  font-size: var(--size-step-0);
+  max-width: 45ch;
+}
+
+/* style button */
+a {
+  text-decoration: none;
+  color: var(--color-text-button);
+  background-color: var(--color-bg-button);
+  padding: 12px 28px;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+  font-size: var(--size-step-0);
+  width: fit-content;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  max-width: 1000px;
+  margin-inline: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.grid-1:not(:has(img)) > * {
+  margin-bottom: 1rem;
+}
+
+.grid-1:has(img) {
+  display: grid;
+  gap: 0.7rem;
+}
+
+@media (min-width: 800px) {
+  .grid {
+    grid-template-columns: 1.5fr 2fr;
+    place-items: center;
+  }
+
+  .grid-1:has(img) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .img-1 {
+    grid-column: 2 / span 1;
+  }
+
+  .img-2 {
+    grid-column: 1 / span 1;
+  }
+
+  .img-3 {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 2;
+  }
+
+  .img-4 {
+    grid-column: 3 / span 1;
+  }
+
+  .img-5 {
+    grid-column: 1 / span 1;
+  }
+
+  .img-6 {
+    grid-column: 3 / span 1;
+  }
+
+  .img-7 {
+    grid-column: 2 / span 1;
+  }
+}

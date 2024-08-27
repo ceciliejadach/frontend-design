@@ -6,10 +6,6 @@
   }
 }
 
-.card:not(:has(img)) {
-  padding: 1rem;
-}
-
 .card:not(:has(img)) h3 {
   font-size: 1.6rem;
 }

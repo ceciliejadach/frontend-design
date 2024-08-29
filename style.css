@@ -42,3 +42,17 @@ article {
     --flow-space: 2rlh;
   }
 }
+
+/* article {
+display: grid; 
+grid-template-columns: [full-start] 1fr 2rem [content] minmax(0, 65ch) 2rem 1fr [full-end]
+
+
+> * {
+grid-column: content;
+}
+
+img {
+grid-cloumn: full;
+}
+} */

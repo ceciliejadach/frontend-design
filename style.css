@@ -17,18 +17,22 @@ section {
   }
 
   .content {
+    grid-area: 1 / 2 / auto / span 2;
+
     > * + * {
       margin-top: 0.75rlh;
     }
   }
 
   figure {
-    display: grid;
+    display: inherit;
+    grid-area: 1 / 1 / span 2/-2;
     grid-template-columns: subgrid;
     grid-template-rows: subgrid;
   }
 
   img {
+    grid-area: 1 /1 /-1;
     align-self: stretch;
     object-fit: cover;
     aspect-ratio: 1.35;
@@ -40,7 +44,17 @@ section {
     color: var(--gray-900);
     background: var(--gray-100);
     padding: 0.4rlh 0.6rlh;
+    align-self: end;
+    grid-area: 2/2;
+  }
 
-    grid-row: 2 / span 1;
+  @media (width < 600px) {
+    grid: revert;
+
+    .content,
+    .figure {
+      display: revert;
+      grid-area: revert;
+    }
   }
 }

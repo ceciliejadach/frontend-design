@@ -1,0 +1,44 @@
+main {
+  margin-block: 2rem;
+  padding-inline: 1rem;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+img {
+  inline-size: 100%;
+  display: block;
+}
+
+* {
+  margin: 0;
+}
+
+.card-wrapper {
+  outline: 1px solid red;
+  container-type: inline-size;
+}
+
+.card {
+  background: oklch(95% 0.01 220);
+  padding: 1rem;
+  font-family: system-ui;
+  line-height: 1.5;
+  container-type: inline-size;
+
+  .content {
+    > * + * {
+      margin-top: 1rem;
+    }
+
+    & h2 {
+      line-height: 1.125;
+    }
+  }
+
+  @container (width < 500px) {
+    .content :nth-child(3) {
+      display: none;
+    }
+  }
+}

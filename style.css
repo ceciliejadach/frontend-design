@@ -3,11 +3,7 @@ main {
   padding-inline: 1rem;
   display: grid;
   grid-template-columns: 300px 1fr;
-}
-
-img {
-  inline-size: 100%;
-  display: block;
+  gap: 1rem;
 }
 
 * {
@@ -15,30 +11,95 @@ img {
 }
 
 .card-wrapper {
-  outline: 1px solid red;
   container-type: inline-size;
 }
 
 .card {
-  background: oklch(95% 0.01 220);
+  background: rgb(245, 245, 245);
+  border-radius: 10px;
   padding: 1rem;
   font-family: system-ui;
   line-height: 1.5;
   container-type: inline-size;
+  display: grid;
+  gap: 1rem;
 
   .content {
-    > * + * {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+
+    /* > * + * {
       margin-top: 1rem;
+    } */
+
+    & h3 {
+      line-height: 1.125;
     }
 
-    & h2 {
-      line-height: 1.125;
+    img {
+      max-width: 150px;
+      border-radius: 5px;
+    }
+
+    & > div > div > div p {
+      font-weight: 600;
+    }
+  }
+
+  & > div:nth-of-type(2) {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  & > div:nth-of-type(2) > div:first-of-type {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  & > div:nth-of-type(2) > div:last-of-type {
+    display: flex;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding: 0.7em 0;
+
+    button {
+      background: transparent;
+      border: none;
+      color: rgb(19, 104, 250);
+      text-decoration: none;
+      font-size: 16px;
     }
   }
 
   @container (width < 500px) {
-    .content :nth-child(3) {
+    .content > div > div > p:last-of-type {
       display: none;
+    }
+  }
+
+  @container (width > 300px) {
+    .content {
+      grid-template-columns: auto auto;
+    }
+
+    .content > div {
+      display: flex;
+    }
+
+    .content > div > div > div {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 0.5rem;
+    }
+
+    & > div:nth-of-type(2) > div:last-of-type {
+      justify-content: end;
+    }
+
+    & > div:nth-of-type(2) {
+      justify-content: space-between;
     }
   }
 }

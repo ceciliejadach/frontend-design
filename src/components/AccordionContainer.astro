@@ -26,31 +26,60 @@ const { data, exclusive } = Astro.props;
 
 <script>
   // @ts-nocheck
+  // const accordionWrappers = document.querySelectorAll(".accordion-container");
+
+  // accordionWrappers.forEach((accordionWrapper) => {
+  //   accordionWrapper.addEventListener("click", (event) => {
+  //     const button = event.target;
+  //     const article = button.closest("article");
+  //     const exclusive = accordionWrapper.dataset.exclusive;
+
+  //     if (!article || button.tagName.toLowerCase() !== "button") {
+  //       return;
+  //     }
+
+  //     const expanded = button.getAttribute("aria-expanded") === "true" || false;
+
+  //     if (exclusive === "true") {
+  //       const currentExpanded = accordionWrapper.querySelector(
+  //         '[aria-expanded="true"]'
+  //       );
+
+  //       if (currentExpanded && currentExpanded !== button) {
+  //         currentExpanded.setAttribute("aria-expanded", "false");
+  //       }
+  //     }
+
+  //     button.setAttribute("aria-expanded", !expanded);
+  //   });
+  // });
   const accordionWrappers = document.querySelectorAll(".accordion-container");
 
   accordionWrappers.forEach((accordionWrapper) => {
     accordionWrapper.addEventListener("click", (event) => {
-      const button = event.target;
+      const button = event.target.closest("button");
       const article = button.closest("article");
+      const answerContainer = article.querySelector(".answer-container");
       const exclusive = accordionWrapper.dataset.exclusive;
 
-      if (!article || button.tagName.toLowerCase() !== "button") {
+      if (!article || !button) {
         return;
       }
 
-      const expanded = button.getAttribute("aria-expanded") === "true" || false;
+      const expanded = button.getAttribute("aria-expanded") === "true";
 
       if (exclusive === "true") {
-        const currentExpanded = accordionWrapper.querySelector(
-          '[aria-expanded="true"]'
-        );
+        const currentExpanded = accordionWrapper.querySelector('[aria-expanded="true"]');
 
         if (currentExpanded && currentExpanded !== button) {
           currentExpanded.setAttribute("aria-expanded", "false");
+          const otherAnswerContainer = currentExpanded.closest("article").querySelector(".answer-container");
+          otherAnswerContainer.classList.remove("is-open");
         }
       }
 
       button.setAttribute("aria-expanded", !expanded);
+      answerContainer.classList.toggle("is-open", !expanded); // Tilføj/fjern klassen 'is-open'
     });
   });
 </script>
